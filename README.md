@@ -12,5 +12,5 @@ Coalescence Kick (https://github.com/averkiev75/Coalescence-Kick) in c++ by Bori
 SnippetKick (https://github.com/HumanOsv/SnippetKick) in Perl by Osvaldo Yañez Osses <br>
 <br>
 The original paper that started everything: 
-"Stochastic Search for Isomers on a Quantum Mechanical Surface" M. Saunders, J. Comput. Chem. 2004, 25, 621 - 626. 
+"Stochastic Search for Isomers on a Quantum Mechanical Surface" by Martin Saunders, (J. Comput. Chem. 2004, 25, 621 - 626.) 
 was published in 2004, and has been cited 177 times (2020). 
