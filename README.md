@@ -10,8 +10,7 @@ It has had many iterations in the past 16 years in our research group (Vrček-Š
 Two other approaches are:<br>
 Coalescence Kick (https://github.com/averkiev75/Coalescence-Kick) in c++ by Boris Averkiev <br>
 SnippetKick (https://github.com/HumanOsv/SnippetKick) in Perl by Osvaldo Yañez Osses <br>
-
-The original paper that started everything:<br>  
-"Stochastic Search for Isomers on a Quantum Mechanical Surface"
-M. Saunders, J. Comput. Chem. 2004, 25, 621 - 626. <br>
+<br>
+The original paper that started everything: 
+"Stochastic Search for Isomers on a Quantum Mechanical Surface" M. Saunders, J. Comput. Chem. 2004, 25, 621 - 626. 
 was published in 2004, and has been cited 177 times (2020). 
