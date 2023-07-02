@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Saunders frozen KICK version</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="frozen.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+</head>
+
+<body>
+
+    <div class="header_froz">
+        <h1>FROZEN</h1>
+    </div>
+	
+  <div class="nav" id="menu">
+  <a href="index.html">INTRODUCTION</a>
+  <a href="KICK.html">KICK</a>
+  <a href="KICK_Saunders_original.html">Saunders</a>
+  <a href="KICK_Saunders_coalescence.html">Coalescence</a>
+  <a href="WIGGLE.html">WIGGLE</a>
+  <a href="KICK_Saunders_frozen.html" class="active">FROZEN</a>
+  <a href="KICKmax.html">KICK MAX</a>  
+  <a href="KICK_procedure_description.html" class="right">MORE INFO</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+<script>
+function myFunction() {
+  var x = document.getElementById("menu");
+  if (x.className === "nav") {
+    x.className += " responsive";
+  } else {
+    x.className = "nav";
+  }
+}
+</script>
+
+    <div class="row">
+        <div class="column">
+            <h2>Saunders frozen KICK version</h2>
+            <p>The kick script is based on the stochastic search procedure originally defined by M. Saunders: "Stochastic Search for Isomers on a Quantum Mechanical Surface" M. Saunders, J. Comput. Chem. 2004, 25, 621 - 626.
+                <br>
+                <br> The original Fortran code was rewritten in Javascript for web version. <br>
+This version is the first adaptation of the original procedure, where one molecular fragment is defined,<br>
+and kept frozen while the rest is "kicked" around. <br><br>
+Articles published with this procedure in our group include: <br>
+"Prereactive complexes in chlorination of benzene, triazine, and tetrazine: A quantum chemical study" <br>
+D. Šakić, V. Vrček, <em>J. Phys. Chem. A</em> <strong>2012</strong>, <em>116</em>(4), 1298-1306.<br>
+Although, original script did not have minimal distance value, the same <br>
+was added for quick elimination of unfit structures. <br>
+                <br> Help from Valerije Vrček (discussion), Hendrik Zipse (documentation, suggestions) and Vasily Korotenko (testing) is greatly appreciated. Please report all suggestion, changes, improvements, and usage to dsakic@pharma.hr
+            </p><br>
+
+		</div>
+	
+        <div class="column1">
+            <h2>VISUAL OUTPUT</h2>
+            <div id="container-01" class="mol-container"></div>
+            <!--FETCH REPORTING VARIABLE DEMO-->
+            <br>
+		<div id="dado">
+         <p id="demo1"></p>
+         <p id="demo"></p>
+         <p id="demo2"></p>         
+        </div>
+        </div>
+		
+		<div class="column2">
+		            <!--FORM GENERATION-->
+            <form name="parameters"> Distance parameter:
+            <input type="text" name="oneNo" value="2.0"> (Angstrom)
+            <br>
+            <br> Number of new files:
+            <input type="text" name="twoNo" value="10">
+            <br>
+            <br> Minimal distance:
+            <input type="text" name="threeNo" value="0.1"> (Angstrom)
+            <br>
+            <br>
+            </form>
+            <br> Input XYZ coordinates*:
+            <br>
+            <textarea id="links" name="upload" placeholder="" cols="40" rows="10">
+O   -0.167787    1.645761    0.108747 F
+H    0.613411    1.102620    0.113724 F
+H   -0.093821    2.209720   -0.643619 F
+O    1.517569   -0.667424   -0.080674 
+H    1.989645   -1.098799    0.612047 
+H    0.668397   -1.091798   -0.139744 
+O    3.517569   -2.667424   -2.080674 
+H    3.989645   -3.098799   -1.588047 
+H    2.668397   -3.091798   -2.139744
+            </textarea>
+		<ul class="b">
+            <li>Numbering starts from 0.</li>
+            <li>Fragments are to be denoted by "F" after coordinates.</li>
+            <li>Fragment F is frozen.</li>
+	        </ul>
+        <button type="submit" class="generate" onClick="check()">GENERATE</button>
+		<br>
+		<button class="showhide" onClick="toggle_visibility('dado');">SHOW OUTPUT</button>
+      
+<script type="text/javascript">
+<!--
+    function toggle_visibility(dado) {
+       var e = document.getElementById(dado);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+//-->
+</script>
+								<ul class="a">
+            <li>3Dmol.js: molecular visualization with WebGL</li>
+            <li>N. Rego, D. Koes, <em>Bioinformatics</em> <strong>2015</strong>, <em>31</em>(8), 1322 - 1324.</li>
+            <li>Yellow atoms denote starting positions.</li>
+		</ul>
+		<br>
+	</div>
+	</div>
+    <div class="footer">
+        <p>First web adaption: Davor Šakić, 2020.<br>
+			design by <a href="https://vakuum.studio" target="_blank">Luka Lovrek</a></p>
+    </div>
+
+</body>
+
+</html>

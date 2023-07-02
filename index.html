@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Introduction to KICK versions</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="home.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="https://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+        <script src="all.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>INTRODUCTION TO KICK VERSION</h1>
+        </div>
+        <!--navigacija-->
+        <div class="nav" id="menu">
+            <a href="index.html" class="active">INTRODUCTION</a>
+            <a href="KICK_Saunders_original.html">SAUNDERS</a>
+            <a href="KICK_Saunders_coalescence.html">COALESCENCE</a>
+            <a href="KICK_Saunders_frozen.html">FROZEN</a>
+            <a href="WIGGLE.html">WIGGLE</a>
+            <a href="KICK.html">KICK</a>
+            <a href="KICKmax.html">KICK MAX</a>
+            <a href="KICK_procedure_description.html" class="right">MORE INFO</a>
+            <a href="javascript:void(0);" class="icon" onclick="hamburger()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+        <script>
+            function hamburger() {
+                var x = document.getElementById("menu");
+                if (x.className === "nav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "nav";
+                }
+            }
+        </script>
+        <div class="row">
+            <div id="column" class="one">
+                <h2>Introduction to KICK versions</h2>
+                <h4><a href="https://scholar.google.com/citations?user=BBURjcwAAAAJ&hl=en" target="_blank">Davor Šakić, 2020</a></h4>
+                <p>
+                    Over the years, stochastic search procedure for starting structures on the potential energy surface has evolved from 50 lines of Fortran code with simple and rugged idea, to a variety of different flavors and variants.
+                    Here, some of those are presented, and implemented in a web-page variant.<br />
+                    <br />
+
+                    To choose the right variant, a common example with three water molecules with in-line orientation to each other is chosen. Click Visualize to preview starting coordinates. Several options are given, according to
+                    different algorithms here presented. Please choose among the provided options. After clicking Generate button, newly generated output (description and visualization) will showcase the strengths and flaws of each approach.<br />
+                    <br />
+
+                    More info about code can be found in the More Info section, as well as found code examples from other research groups using local variants of the original procedure.<br />
+                    <br />
+
+                    Slight change has been done on the scripts here used; minimal distance parameter between any two atoms previously was defined by user. Now it is automatically set at 90% of sum of covalent radius's of each pair. Bonds
+                    are portrayed for inter-atomic distances between 90% and 110% of sum of covalent radius's of each pair.<br />
+                    <br />
+
+                    Help from Valerije Vrček (discussion), Hendrik Zipse (documentation, suggestions) and Vasily Korotenko (testing) is greatly appreciated. Please report all suggestion, changes, improvements, and usage to dsakic@pharma.hr<br />
+                </p>
+                <br />
+            </div>
+            <div id="column1" class="two">
+                <h3>VISUAL OUTPUT</h3>
+                <div id="container-01" class="visual"></div>
+                <br />
+                <div id="column3" class="three">
+                    <p id="demo1"></p>
+                    <p id="demo"></p>
+                    <p id="demo2"></p>
+                </div>
+            </div>
+
+            <script>
+                $(document).ready(function () {
+                    $(".navToggle4").click(function () {
+                        $(".tabsClick2").toggleClass("showhide_div");
+                    });
+                });
+                                $(document).ready(function () {
+                    $(".navToggle1").click(function () {
+                        $(".tabsClick1").toggleClass("showhide_div");
+                    });
+                });
+            </script>
+            <div id="column2" class="four">
+                <div class="tabsClick1">
+                <h3>INPUT COORDINATES</h3>
+                <textarea id="links" name="upload" cols="40" rows="20">
+O 3.51757 2.33258 1.91933 0
+H 3.98965 1.90120 2.61205 0
+H 2.66840 1.90820 1.86026 0
+O 2.51757 1.33258 0.91933 1
+H 2.98965 0.9012 1.61205 1
+H 1.6684 0.9082 0.86026 1
+O 1.51757 0.33258 -0.08067 2
+H 1.98965 -0.0988 0.61205 2
+H 0.6684 -0.0918 -0.13974 2
+                </textarea>
+                <!--FORM GENERATION-->
+                <ul class="b">
+                    <li>Input consists of Atom X Y Z F.</li>
+                    <li>F(ragments) are successive and start with 0.</li>
+                    <li>Atoms with the same F belong to the same fragment.</li>
+                    <li>Fragment 0 is frozen.</li>
+                </ul>
+            </div>
+                <button type="submit" class="navToggle1" id="submit3" name="submi3" value="coordinates">INPUT COORDINATES</button>
+                <br />
+                <button type="submit" class="navToggle3" id="submit" name="submit" value="Visualize" onClick="viz()">VISUALIZE</button>
+                <br />
+                <form name="parameters1">
+                    <br />
+                    <label class="radio">
+                        Saunders Original
+                        <input type="radio" name="method" value="0" />
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="radio">
+                        Saunders from Origin
+                        <input type="radio" name="method" value="1" />
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="radio">
+                        Saunders Frozen
+                        <input type="radio" name="method" value="2" />
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="radio">
+                        Coalescence
+                        <input type="radio" name="method" value="3" />
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="radio">
+                        Wiggle
+                        <input type="radio" name="method" value="5" />
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="radio">
+                        Kick
+                        <input type="radio" checked="checked" name="method" value="4" />
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="radio">
+                        Kick from Origin
+                        <input type="radio" name="method" value="6" />
+                        <span class="checkmark"></span>
+                    </label>
+                </form>
+                <br />
+                <button type="submit" class="navToggle2" id="submit1" name="submit" value="Generate" onClick="gen()">GENERATE</button>
+                <br />
+                <button type="submit" class="navToggle4" id="submit2" name="submit1" value="Generate1">ADVANCED OPTIONS</button>
+                <br />
+                <div class="tabsClick2">
+                    <form name="parameters">
+                        Number of new files:<input type="text" maxlength="3" name="oneNo" value="1" /> <br />
+                        <br />
+                        "Kick" parameter:<input type="text" maxlength="3" name="twoNo" value="0" /> <br />
+                        <br />
+                        Value minimal bond distance as ratio of sum of covalent radius: <input type="text" maxlength="3" name="val1" value="0.9" /> <br />
+                        <br />
+                        Value maximum bond distance as ratio of sum of covalent radius: <input type="text" maxlength="3" name="val2" value="1.1" /> <br />
+                        <br />
+                        Value minimal non-bond distance as ration of sum of covalent radius: <input type="text" maxlength="3" name="val3" value="1.4" /> <br />
+                        <br />
+                        <label class="kocka">
+                            Download file?
+                            <input type="checkbox" id="download" />
+                            <span class="oznaka"></span>
+                        </label>
+                    </form>
+                </div>
+                <br />
+            </div>
+        </div>
+        <div class="footer">
+		<label class="switch">
+  <input type="checkbox" onclick="darkmode()">
+  <span class="slider"></span>
+					</label>
+            <p>
+                First web adaption: Davor Šakić, 2015. Update: Davor Šakić, 2020.<br />
+                design by <a href="https://vakuum.studio" target="_blank">Luka Lovrek</a>
+            </p>
+        </div>
+		<script>
+function darkmode() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+}
+</script>
+    </body>
+</html>

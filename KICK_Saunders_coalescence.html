@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <title>Coalescence modification to Saunders KICK version</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="coalesence.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+</head>
+
+<body>
+
+    <div class="header_coal">
+        <h1>COALESCENCE</h1>
+    </div>
+	
+  <div class="nav" id="menu">
+  <a href="index.html">INTRODUCTION</a>
+  <a href="KICK.html">KICK</a>
+  <a href="KICK_Saunders_original.html">Saunders</a>
+  <a href="KICK_Saunders_coalescence.html" class="active">Coalescence</a>
+  <a href="WIGGLE.html">WIGGLE</a>
+  <a href="KICK_Saunders_frozen.html">FROZEN</a>
+  <a href="KICKmax.html">KICK MAX</a>  
+  <a href="KICK_procedure_description.html" class="right">More info</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+<script>
+function myFunction() {
+  var x = document.getElementById("menu");
+  if (x.className === "nav") {
+    x.className += " responsive";
+  } else {
+    x.className = "nav";
+  }
+}
+</script>
+
+    <div class="row">
+        <div class="column">
+            <h2>Coalescence modification to Saunders KICK version</h2>
+            <p>The kick script is based on the stochastic search procedure originally defined by M. Saunders: "Stochastic Search for Isomers on a Quantum Mechanical Surface" M. Saunders, J. Comput. Chem. 2004, 25, 621 - 626.
+                <br>
+                
+				The original Fortran code was rewritten in Javascript for web version. 
+Coalescence kick procedure was developed by Boris Averkiev in the Boldyrev group at Utah University.
+"Geometry and Electronic Structure of Doped Clusters via the Coalescence Kick Method" <br>
+B. Averkiev, <strong>2009</strong>, Ph.D. dissertation, <em>Utah State University, Logan, Utah,</em> 18-25 <br><br>
+Algorithm written in c++ by Boris Averkiev can be found at <a href="https://github.com/averkiev75/Coalescence-Kick" target="_blank">github</a> repository.
+<br>
+								
+                <br> Help from Valerije Vrček (discussion), Hendrik Zipse (documentation, suggestions) and Vasily Korotenko (testing) is greatly appreciated. Please report all suggestion, changes, improvements, and usage to dsakic@pharma.hr
+            </p><br>
+
+	</div>
+	
+        <div class="column1">
+            <h2>OUTPUT</h2>
+			
+		<div id="dado2">
+         <p id="demo1"></p>
+         <p id="demo"></p>
+         <p id="demo2"></p>         
+        </div>
+
+            <!--FETCH REPORTING VARIABLE DEMO-->
+            <br>
+        </div>
+	
+	<div class="column2">
+	 <!--FORM GENERATION-->
+            <form name="parameters">
+			Distance parameter:
+            <input type="text" name="oneNo" value="2.0"> (Angstrom)
+            <br>
+            <br> Number of new files:
+            <input type="text" name="twoNo" value="5">
+            <br>
+            <br> Number of loops toward coalescence: 
+            <input type="text" name="threeNo" value="15">
+            <br>
+            <br>
+			<!--Minimal distance: <input type="text" name="threeNo" value="0.1"/> (Angstrom)-->
+            </form>
+            <br> Input XYZ coordinates*:
+            <br>
+            <textarea id="links" name="upload" placeholder="" cols="40" rows="10">
+O   -0.167787    1.645761    0.108747 
+H    0.613411    1.102620    0.113724 
+H   -0.093821    2.209720   -0.643619 
+O    1.517569   -0.667424   -0.080674 
+H    1.989645   -1.098799    0.612047 
+H    0.668397   -1.091798   -0.139744 
+O    3.517569   -2.667424   -2.080674 
+H    3.989645   -3.098799   -1.588047 
+H    2.668397   -3.091798   -2.139744 
+            </textarea>
+        <button type="submit" class="generate" onClick="check()">GENERATE</button>
+		<br>
+	</div>
+	 </div>
+    <div class="footer">
+        <p>First (javascript) web adaption: Davor Šakić, 2020<br>
+			design by <a href="https://vakuum.studio" target="_blank">Luka Lovrek</a></p>
+    </div>
+
+</body>
+
+</html>
+
+
+
+

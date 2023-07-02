@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <title>KICK version MAX</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="max.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+</head>
+
+<body>
+
+    <div class="header_max">
+        <h1>KICK MAX</h1>
+    </div>
+	
+  <div class="nav" id="menu">
+  <a href="index.html">INTRODUCTION</a>
+  <a href="KICK.html">KICK</a>
+  <a href="KICK_Saunders_original.html">Saunders</a>
+  <a href="KICK_Saunders_coalescence.html">Coalescence</a>
+  <a href="WIGGLE.html">WIGGLE</a>
+  <a href="KICK_Saunders_frozen.html">FROZEN</a>
+  <a href="KICKmax.html" class="active">KICK MAX</a>  
+  <a href="KICK_procedure_description.html" class="right">More info</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+<script>
+function myFunction() {
+  var x = document.getElementById("menu");
+  if (x.className === "nav") {
+    x.className += " responsive";
+  } else {
+    x.className = "nav";
+  }
+}
+</script>
+
+    <div class="row">
+        <div class="column">
+            <h2>KICK version MAX</h2>
+            <p>This version needs additional input that defines molecular fragements.
+Atoms belonging to a molecular fragment have the same number tag after xyz coordinates.
+Benefits of this approach is getting a set of input structures that have basic connectivity
+intact, while sacrficing un-biased exploration of the potential energy surface.<br><br>
+In the first step, a geometric center (C) of each fragment is located, and relative coordinates
+of each atom in fragment is determined. For each non-frozen fragment, a random atom (A) is chosen,
+and a random vector (V) is generated. Length of said vector is equal to minimal distance value
+added to randomly chosen fraction of distance parameter.<br><br> New point (P) for each fragment is set
+by combining coordinates of atom A and vector V. In each fragment-point (P) fragment-center (C)
+of randomly rotated fragment is placed. This procedure completely ignores initial relative
+positions of each fragment.<br><br>
+This version is better suited for placement of large number of same fragemnts. Common example<br>
+includes placement of water molecules in solvation shells around the solute.<br>
+<br>
+Articles published with this (similar) procedure in our group include: <br>
+"A computational study of the chlorination and hydroxylation of amines by hypochlorous acid"
+D. Šakić, M. Hanževački, D. M. Smith, V. Vrček, <em>Org. Biomol. Chem.</em> <strong>2015</strong>, <em>13</em>, 11740 - 11752.<br>
+                <br> Help from Valerije Vrček (discussion), Hendrik Zipse (documentation, suggestions) and Vasily Korotenko (testing) is greatly appreciated. Please report all suggestion, changes, improvements, and usage to dsakic@pharma.hr
+            </p><br>
+
+	</div>
+	
+        <div class="column1">
+            <h2>OUTPUT</h2>
+	       <div id="dado2">
+         <p id="demo2"></p>
+         <p id="demo"></p>
+        </div>
+            <br>
+        </div>
+		<div class="column2">
+		 <!--FORM GENERATION-->
+            <form name="parameters"> Distance parameter:
+            <input type="text" name="oneNo" value="2.0"> (Angstrom)
+            <br>
+            <br> Number of new files:
+            <input type="text" name="twoNo" value="10">
+            <br>
+            <br> Minimal distance:
+            <input type="text" name="threeNo" value="1.0"> (Angstrom)
+            <br>
+            <br> Number of fragments:
+            <input type="text" name="fourNo" value="2">
+            <br>(not counting frozen "0" fragment)
+            <br>
+			<br>Repetition of fragments: 
+			<input type="text" name="fiveNo" value="2"> (does not include frozen "0" fragment)
+            </form>
+            <br> Input XYZ coordinates*:
+            <br>
+            <textarea id="major" name="upload" cols="40" rows="10">
+O   -0.167787    1.645761    0.108747 0
+H    0.613411    1.102620    0.113724 0
+H   -0.093821    2.209720   -0.643619 0
+            </textarea>
+<br>
+Input XYZ coordinates of kick fragments:
+<br>
+<textarea id="minor" name="upload" cols="40" rows="10">
+O    1.517569   -0.667424   -0.080674 1
+H    1.989645   -1.098799    0.612047 1
+H    0.668397   -1.091798   -0.139744 1
+O    3.517569   -2.667424   -2.080674 2
+H    3.989645   -3.098799   -1.588047 2
+H    2.668397   -3.091798   -2.139744 2
+</textarea>
+			<button type="submit" class="generate" onClick="check()">GENERATE</button>
+			<br>
+		<ul class="b">
+            <li>Numbering starts from 0.</li>
+            <li>Fragments are to be denoted by n after coordinates.</li>
+            <li>Fragment 0 is frozen.</li>
+	        </ul>
+		</div>
+		
+    </div>
+	
+    <div class="footer">
+        <p>First web adaption: Davor Šakić, 2015. - Update: Davor Šakić 2020.<br>
+			design by <a href="https://vakuum.studio" target="_blank">Luka Lovrek</a></p>
+    </div>
+
+</body>
+
+</html>
